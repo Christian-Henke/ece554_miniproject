@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 License Statement:  GPL Version 3
 ---------------------------------
 Copyright (c) 2020 University of Florida
@@ -39,3 +40,7 @@ easier to get started.
 # [DevCloud Instructions](https://github.com/ARC-Lab-UF/intel-training-modules#devcloud-instructions)
 
 
+=======
+# ece554_miniproject
+This may be a description, but if it is, it is not a very descriptive one.
+>>>>>>> 874fdaab4275ef972dc93d8e71b03ee8be4594db

@@ -71,10 +71,9 @@ module afu
    t_ccip_c0_ReqMmioHdr mmio_hdr;
    assign mmio_hdr = t_ccip_c0_ReqMmioHdr'(rx.c0.hdr);
 
-   logic en;
    logic rst_n;
    assign rst_n = !rst;
-   fifo DUT(.clk(clk), .rst_n(rst_n), .en(en), .d(user_reg), .q(user_reg));
+   fifo instantiatedFIFO(.clk(clk), .rst_n(rst_n), .en(rx.c0.mmioWrValid), .d(rx.c0.data[63:0]), .q(user_reg));
 
    // =============================================================//   
    // MMIO write code

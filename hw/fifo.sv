@@ -14,15 +14,19 @@ module fifo
   output [BITS-1:0] q
   );
   // your RTL code here
-  reg [BITS-1:0] state[DEPTH-1:0];   
+  logic [BITS-1:0] state[DEPTH-1:0];   
 
   always_ff @(posedge clk, negedge rst_n) begin
-    if (!rst_n || en) begin
-      // hardcoded depth of 8
-      for (int i = 0; i<DEPTH-1; i++) begin
-         state[i] <= rst_n ? state[i+1] : {(BITS){1'b0}};
-      end 
-      state[DEPTH-1] <= rst_n ? d : {(BITS){1'b0}};
+    if (!rst_n) begin
+        for (int i = 0; i<DEPTH; i++) begin
+           state[i] <= {(BITS){1'b0}};
+        end 
+    end
+    else if (en) begin
+        for (int i = 0; i<DEPTH-1; i++) begin
+           state[i] <= state[i+1];
+        end 
+        state[DEPTH-1] <= d;
     end
   end
   

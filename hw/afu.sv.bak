@@ -74,7 +74,7 @@ module afu
    logic rst_n;
    assign rst_n = !rst;
    logic [63:0] fifo_out;
-   fifo instantiatedFIFO(.clk(clk), .rst_n(rst_n), .en(rx.c0.mmioWrValid), .d(rx.c0.data[63:0]), .q(fifo_out));
+   fifo #(8,64) instantiatedFIFO(.clk(clk), .rst_n(rst_n), .en(rx.c0.mmioWrValid), .d(rx.c0.data[63:0]), .q(fifo_out));
 
    // =============================================================//   
    // MMIO write code
@@ -95,7 +95,7 @@ module afu
 		  // memory-mapped register (h0020), then write the received data on channel c0 
 		  // to the register.
                   case (mmio_hdr.address)
-                    16'h0020: user_reg <= rx.c0.data[63:0];
+                    16'h0020: user_reg <= fifo_out;//rx.c0.data[63:0];
                   endcase
                end
           end

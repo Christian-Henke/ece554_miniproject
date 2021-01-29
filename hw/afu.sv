@@ -74,7 +74,7 @@ module afu
    logic rst_n;
    assign rst_n = !rst;
    logic [63:0] fifo_out;
-   fifo instantiatedFIFO(.clk(clk), .rst_n(rst_n), .en(rx.c0.mmioWrValid), .d(rx.c0.data[63:0]), .q(fifo_out));
+   fifo #(.DEPTH(8),.BITS(64)) instantiatedFIFO(.clk(clk), .rst_n(rst_n), .en(rx.c0.mmioWrValid), .d(rx.c0.data[63:0]), .q(fifo_out));
 
    // =============================================================//   
    // MMIO write code

@@ -87,10 +87,8 @@ module afu
           end
         else
           begin
-             en <= 1'b0;
              // Check to see if there is a valid write being received from the processor.
              if (rx.c0.mmioWrValid == 1)
-               en <= 1'b1;
                begin
 		  // Check the address of the write request. If it maches the address of the
 		  // memory-mapped register (h0020), then write the received data on channel c0 

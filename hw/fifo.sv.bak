@@ -14,7 +14,7 @@ module fifo
   output [BITS-1:0] q
   );
   // your RTL code here
-  reg [BITS-1:0] state[DEPTH-1:0];   
+  logic [BITS-1:0] state[DEPTH-1:0];   
 
   always_ff @(posedge clk, negedge rst_n) begin
     if (!rst_n) begin

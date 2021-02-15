@@ -18,6 +18,7 @@ module fifo
 
   always_ff @(posedge clk, negedge rst_n) begin
     if (!rst_n) begin
+	// clear all bits
         for (int i = 0; i<DEPTH; i++) begin
            state[i] <= {(BITS){1'b0}};
         end 
